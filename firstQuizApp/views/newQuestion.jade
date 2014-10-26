@@ -20,17 +20,17 @@ block navbar
 
 block content
  div.span7.well
- form(role='form', action='/quizMaster/createQuestion', method='post', style='max-width: 300px;')
+ form(role='form', action='/quizMaster/submitQuestion', method='post', style='max-width: 300px;')
    .form-group
-     input.form-control(type='text', name='username', placeholder='Question')
+     input.form-control(type='text', name='question', placeholder='Question')
    .form-group
-     input.form-control(type='text', name='text', placeholder='Correct Answer')
+     input.form-control(type='text', name='correctAnswer', placeholder='Correct Answer')
    .form-group
-     input.form-control(type='text', name='text', placeholder='Wrong Answer 1')
+     input.form-control(type='text', name='wrongAnswer1', placeholder='Wrong Answer 1')
    .form-group
-     input.form-control(type='text', name='text', placeholder='Wrong Answer 2')
+     input.form-control(type='text', name='wrongAnswer2', placeholder='Wrong Answer 2')
    .form-group
-     input.form-control(type='text', name='text', placeholder='Wrong Answer 3')
+     input.form-control(type='text', name='wrongAnswer3', placeholder='Wrong Answer 3')
    button.btn.btn-default(type='submit') Submit
    a(href='/')
      button.btn.btn-primary(type='button') Cancel

@@ -1,5 +1,6 @@
 var passport = require('passport');
 var Account = require('./models/account');
+var Question = require('./models/question');
 
 module.exports = function (app) {
 
@@ -28,6 +29,26 @@ module.exports = function (app) {
               res.redirect('/login');
           if(req.user)
               res.render('newQuestion', { title : 'Create Question' });      
+  });
+
+  app.post('/quizMaster/submitQuestion', function(req, res) {
+    if(!req.user)
+        res.redirect('/login');
+    if(req.user)
+    {
+        var title = req.body.question;
+        var correctAnswer = req.body.correctAnswer;
+        var wrongAnswers = [req.body.wrongAnswer1, 
+          req.body.wrongAnswer2, req.body.wrongAnswer3];
+
+        new Question({
+          title: title,
+          answers: { correct: correctAnswer, incorrect: wrongAnswers}
+        }).save();
+        
+        req.method = "get";
+        res.redirect("/quizMaster/createQuestion");
+    }
   });
 
   app.get('/login', function(req, res) {
