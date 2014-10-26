@@ -1,0 +1,36 @@
+extends layout
+
+block navbar
+ div.centered-pills
+  ul.nav.nav-pills
+   li.active
+    a(href="/") Home
+   li
+    a(href="play") Take Quiz
+   li.dropdown
+    a.dropdown-toggle(data-toggle="dropdown", href="#") Quiz Manager
+     b.caret
+    ul.dropdown-menu
+     li
+      a(href="/quizMaster/createQuestion") Create Question
+     li
+      a(href="/quizMaster/viewQuestions") View Questions
+   li
+    a(href="/logout") Logout
+
+block content
+ div.span7.well
+ form(role='form', action='/quizMaster/createQuestion', method='post', style='max-width: 300px;')
+   .form-group
+     input.form-control(type='text', name='username', placeholder='Question')
+   .form-group
+     input.form-control(type='text', name='text', placeholder='Correct Answer')
+   .form-group
+     input.form-control(type='text', name='text', placeholder='Wrong Answer 1')
+   .form-group
+     input.form-control(type='text', name='text', placeholder='Wrong Answer 2')
+   .form-group
+     input.form-control(type='text', name='text', placeholder='Wrong Answer 3')
+   button.btn.btn-default(type='submit') Submit
+   a(href='/')
+     button.btn.btn-primary(type='button') Cancel

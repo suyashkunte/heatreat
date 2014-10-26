@@ -24,9 +24,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({secret: 'Suyash'}));
 
-app.use(cookieParser('mySecretKey'));
+app.use(cookieParser('Suyash'));
 //app.use(express.session());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,10 +34,13 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+var models = {};
+models.Question = require("./models/question");
+models.Score = require("./models/score");
+models.Account = require('./models/account');
+passport.use(new LocalStrategy(models.Account.authenticate()));
+passport.serializeUser(models.Account.serializeUser());
+passport.deserializeUser(models.Account.deserializeUser());
 
 // routes
 require('./routes')(app);

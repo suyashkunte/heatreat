@@ -23,6 +23,13 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/quizMaster/createQuestion', function(req, res) {
+          if(!req.user)
+              res.redirect('/login');
+          if(req.user)
+              res.render('newQuestion', { title : 'Create Question' });      
+  });
+
   app.get('/login', function(req, res) {
       res.render('login', { user : req.user });
   });

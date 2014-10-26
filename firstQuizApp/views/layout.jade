@@ -1,9 +1,55 @@
 doctype html
 html
-  head
-    title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  h1 Welcome to Quizzard
-  hr
-  body
-    block content
+ head
+  title= title
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet', media='screen')
+  script(src='http://code.jquery.com/jquery.js')
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')    
+  link(rel='stylesheet', href='/stylesheets/style.css')
+ body
+  #wrap
+    div.container
+     div.row.span12(style="margin-bottom: 0px")
+      div.page-header
+       h2.centered-header Quizzard <small>Quiz till you learn</small>
+       block navbar
+        div.centered-pills
+         ul.nav.nav-pills
+          li.active
+           a(href="/") Home
+          li
+           a(href="play") Take Quiz
+          li.dropdown
+           a.dropdown-toggle(data-toggle="dropdown", href="#") Quiz Manager
+            b.caret
+           ul.dropdown-menu
+            li
+             a(href="/quizMaster/createQuestion") Create Question
+            li
+             a(href="/quizMaster/viewQuestions") View Questions
+          li
+           a(href="/login") Login
+          li
+           a(href="/register") Register
+           
+      block contentHolder
+       block content
+        div.span7.well
+       div.span4.pull-right
+        div.well
+         h4.centered-header Top Scores
+         table.table
+          thead
+           tr
+            th #
+            th Name
+            th Date
+          tbody
+           tr
+            td
+            td
+            td
+            
+  footer.centered-header
+   p Created by <a href="https://www.twitter.com/iamshanedoyle">Suyash Kunte</a> for fun!
